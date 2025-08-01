@@ -1,0 +1,38 @@
+@use "../../styles/" as s;
+
+.brand-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include s.padding-y(0.875rem);
+  @include s.layout-padding;
+
+  &__logo {
+    height: 35px;
+    object-fit: contain;
+  }
+
+  &__contact {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  &__text {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    align-self: self-end;
+
+    &--phone {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.125rem;
+      line-height: 1.25rem;
+    }
+  }
+}

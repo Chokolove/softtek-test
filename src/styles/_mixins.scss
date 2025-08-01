@@ -1,0 +1,33 @@
+@use "./variables" as *;
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin padding-x($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin padding-y($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin layout-padding {
+  padding-left: $page-x-padding-desktop;
+  padding-right: $page-x-padding-desktop;
+
+  @media mobile {
+    padding-left: $page-x-padding-mobile;
+    padding-right: $page-x-padding-mobile;
+  }
+}
