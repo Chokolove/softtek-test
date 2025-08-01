@@ -25,6 +25,12 @@
     line-height: 1rem;
     align-self: self-end;
 
+    &--mobile-hidden {
+      @include s.mobile {
+        display: none;
+      }
+    }
+
     &--phone {
       display: flex;
       gap: 0.5rem;

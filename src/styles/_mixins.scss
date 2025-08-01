@@ -26,7 +26,7 @@
   padding-left: $page-x-padding-desktop;
   padding-right: $page-x-padding-desktop;
 
-  @media mobile {
+  @include mobile {
     padding-left: $page-x-padding-mobile;
     padding-right: $page-x-padding-mobile;
   }
