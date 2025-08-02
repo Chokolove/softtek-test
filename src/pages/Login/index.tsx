@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 export default function Login() {
   return (
     <div className="login-page">
+      <div className="login-page__background-blur-purlple"></div>
+      <div className="login-page__background-blur-aqua"></div>
       <BrandBar />
       <div className="login">
         <img src={loginImage} alt="People" className="login__image" />
@@ -22,6 +24,7 @@ export default function Login() {
               alt="People"
             />
           </div>
+          <div className="login__divider" />
           <LoginForm />
         </div>
       </div>

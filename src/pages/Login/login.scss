@@ -3,6 +3,82 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  &__background-blur-purlple {
+    position: fixed;
+    bottom: 50px;
+    left: -5%;
+    width: 15vw;
+    height: 70vh;
+    z-index: -1;
+    pointer-events: none;
+
+    background: radial-gradient(
+      ellipse at bottom left,
+      rgba(s.$color-primary-violet, 1) 0%,
+      rgba(s.$color-primary-violet, 0.4) 25%,
+      rgba(s.$color-primary-violet, 0.15) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    filter: blur(50px);
+    opacity: 1;
+
+    @include s.mobile {
+      left: 0;
+      bottom: 0;
+      width: 30vw;
+      height: 60vh;
+      filter: blur(40px);
+      opacity: 1;
+
+      background: radial-gradient(
+        ellipse at bottom left,
+        rgba(s.$color-primary-violet, 1) 0%,
+        rgba(s.$color-primary-violet, 0.4) 25%,
+        rgba(s.$color-primary-violet, 0.15) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+  }
+
+  &__background-blur-aqua {
+    position: fixed;
+    top: 0;
+    right: -5%;
+    width: 15vw;
+    height: 70vh;
+    z-index: -1;
+    pointer-events: none;
+
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(s.$color-primary-aqua, 0.7) 0%,
+      rgba(s.$color-primary-aqua, 0.5) 30%,
+      rgba(s.$color-primary-aqua, 0.2) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    filter: blur(50px);
+    opacity: 1;
+
+    @include s.mobile {
+      right: 0;
+      top: 0;
+      width: 30vw;
+      height: 60vh;
+      filter: blur(40px);
+      opacity: 1;
+
+      background: radial-gradient(
+        ellipse at top right,
+        rgba(s.$color-primary-aqua, 0.7) 0%,
+        rgba(s.$color-primary-aqua, 0.3) 20%,
+        rgba(s.$color-primary-aqua, 0.15) 40%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+  }
 }
 .login {
   display: flex;
@@ -11,12 +87,25 @@
   margin-top: 2rem;
   margin-bottom: auto;
   gap: 8rem;
-  color: s.$gray-1;
+  color: s.$color-gray-1;
 
   @include s.layout-padding;
 
   @include s.mobile {
     flex-direction: column;
+    margin-top: 0;
+  }
+
+  &__divider {
+    display: none;
+
+    @include s.mobile {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: s.$color-gray-4;
+      margin: 1.5rem 0;
+    }
   }
 
   &__image {
@@ -38,7 +127,6 @@
 
     @include s.mobile {
       width: 100%;
-      padding: 1.5rem;
     }
   }
 
@@ -60,13 +148,13 @@
     gap: 1rem;
 
     @include s.mobile {
-      max-width: 80%;
+      gap: 0.5rem;
     }
   }
 
   &__inline-image {
     display: none;
-    width: 80px;
+    width: 136px;
     height: auto;
 
     @include s.mobile {
@@ -87,6 +175,12 @@
     width: fit-content;
     border-radius: 0.25rem;
     margin: 0;
+
+    @include s.mobile {
+      font-size: 0.75rem;
+      line-height: 1rem;
+      padding: 0.125rem 0.5rem;
+    }
   }
 
   &__title {
@@ -94,5 +188,10 @@
     font-weight: bold;
     line-height: 2.5rem;
     margin: 0;
+
+    @include s.mobile {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    }
   }
 }

@@ -9,11 +9,12 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   &__field {
     padding: 0.5rem 1rem;
-    border: 1px solid s.$gray-2;
+    border: 1px solid s.$color-gray-2;
     border-radius: 0.5rem;
   }
 
@@ -29,7 +30,7 @@
     font-size: 0.75rem;
     line-height: 1rem;
     font-weight: 400;
-    color: s.$gray-2;
+    color: s.$color-gray-2;
   }
 
   &__input {
@@ -37,7 +38,7 @@
     font-size: 1rem;
     line-height: 1.5rem;
     border: none;
-    color: s.$gray-1;
+    color: s.$color-gray-1;
   }
 
   &__error {
@@ -80,7 +81,7 @@
   &__custom-box {
     width: 20px;
     height: 20px;
-    border: 1px solid s.$gray-3;
+    border: 1px solid s.$color-gray-3;
     border-radius: 4px;
     display: inline-block;
     position: relative;
@@ -91,7 +92,7 @@
 
   // Checked state
   &__checkbox:checked + &__custom-box {
-    background-color: s.$gray-3;
+    background-color: s.$color-gray-3;
   }
 
   &__checkbox:checked + &__custom-box::after {
@@ -124,7 +125,7 @@
 
   &__button {
     padding: 1.25rem 2.5rem;
-    background-color: s.$gray-3;
+    background-color: s.$color-gray-3;
     color: white;
     font-size: 1.25rem;
     line-height: 1.5rem;
