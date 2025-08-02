@@ -8,6 +8,17 @@ import { logout } from "@/redux/slices/userSlice";
 import StepHeaderContent from "../StepHeaderContent";
 import { prevStep } from "@/redux/slices/stepSlice";
 
+const STEPS = [
+  {
+    position: 1,
+    text: "Planes y coberturas",
+  },
+  {
+    position: 2,
+    text: "Resumen",
+  },
+];
+
 export default function StepHeader() {
   const currentStep = useSelector((state: RootState) => state.step);
   const dispatch = useDispatch();
@@ -43,31 +54,34 @@ export default function StepHeader() {
           </button>
         )}
         <p className="step-header__text step-header__text--mobile">
-          Paso {currentStep} de 2
+          Paso {currentStep} de {STEPS.length}
         </p>
         <div className="step-header__progress-bar">
           <div
             className="step-header__progress-fill"
-            style={{ width: `${((currentStep - 1) / (2 - 1)) * 100}%` }}
+            style={{
+              width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%`,
+            }}
           />
         </div>
       </div>
       <div className="step-header__desktop">
-        <StepHeaderContent
-          currentStep={currentStep}
-          position={1}
-          text="Planes y coberturas"
-        />
-        <div
-          className={clsx("step-header__line", {
-            "step-header__line--active": currentStep === 2,
-          })}
-        />
-        <StepHeaderContent
-          currentStep={currentStep}
-          position={2}
-          text="Resumen"
-        />
+        {STEPS.map((step, index) => (
+          <div key={index} className="step-header__group">
+            <StepHeaderContent
+              currentStep={currentStep}
+              position={step.position}
+              text={step.text}
+            />
+            {index < STEPS.length - 1 && (
+              <div
+                className={clsx("step-header__line", {
+                  "step-header__line--active": currentStep === step.position,
+                })}
+              />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

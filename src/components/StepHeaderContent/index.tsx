@@ -16,14 +16,19 @@ export default function StepHeaderContent({
 }: StepHeaderContentProps) {
   const currentPlan = useSelector((state: RootState) => state.plan);
   const dispatch = useDispatch();
-  const isDisabled = position === 2 && !currentPlan;
+  const isCurrent = currentStep === position;
+  const isPrevious = position < currentStep;
+  const isNext = position === currentStep + 1;
+  const hasPlan = !!currentPlan;
+
+  const canGoToStep = isCurrent || isPrevious || (isNext && hasPlan);
 
   const handleClick = () => {
-    dispatch(setStep(position));
-    if (!isDisabled) {
+    if (canGoToStep) {
       dispatch(setStep(position));
     }
   };
+
   return (
     <button
       className={clsx("step-header__content step-header__button", {
