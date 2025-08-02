@@ -9,7 +9,7 @@ export const userApi = createApi({
     baseUrl: userUrl,
   }),
   endpoints: (builder) => ({
-    getUserData: builder.query<Partial<User>, void | undefined>({
+    getUserData: builder.query<Partial<User>, void>({
       query: () => "/",
     }),
   }),
