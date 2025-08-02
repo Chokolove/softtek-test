@@ -43,6 +43,8 @@
 
   &__error {
     color: red;
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
   }
 
   &__doc-wrapper {
@@ -133,5 +135,10 @@
     border-radius: 2.5rem;
     width: fit-content;
     cursor: pointer;
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 }
