@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import "./loginForm.scss";
 import { useDispatch } from "react-redux";
-import { login } from "@/redux/userSlice";
+import { login } from "@/redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
+import { useLazyGetUserDataQuery } from "@/redux/services/userApi";
 
 type FormValues = {
   docType: string;
@@ -18,15 +20,26 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm<FormValues>();
   const dispatch = useDispatch();
+  const [triggerGetUserData] = useLazyGetUserDataQuery(); // This needs to change if we use a mutation
+  const navigate = useNavigate();
 
-  const onSubmit = (data: FormValues) => {
-    dispatch(
-      login({
-        docType: data.docType,
-        docNumber: data.docNumber,
-        phone: data.phone,
-      })
-    );
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const user = await triggerGetUserData().unwrap();
+      dispatch(
+        login({
+          docType: data.docType,
+          docNumber: data.docNumber,
+          phone: data.phone,
+          name: user.name,
+          lastName: user.lastName,
+          birthDay: user.birthDay,
+        })
+      );
+    } catch (err) {
+      console.error("Error fetching user:", err);
+    }
+    navigate("/plans");
   };
 
   return (
