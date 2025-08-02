@@ -43,8 +43,6 @@ export default function LoginForm() {
                 className="login-form__select"
                 {...register("docType", {
                   required: true,
-                  validate: (value) =>
-                    value === "dni" || "Solo se permite DNI por ahora",
                 })}
               >
                 <option value="dni">DNI</option>
