@@ -1,4 +1,5 @@
 import BrandBar from "@/components/BrandBar";
+import StepHeader from "@/components/StepHeader";
 import { useGetPlansQuery } from "@/redux/services/plansApi";
 
 export default function Plans() {
@@ -11,7 +12,7 @@ export default function Plans() {
   return (
     <div>
       <BrandBar />
-      <div></div>
+      <StepHeader />
     </div>
   );
 }

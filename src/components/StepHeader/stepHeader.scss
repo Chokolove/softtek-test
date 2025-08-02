@@ -1,0 +1,73 @@
+@use "../../styles/" as s;
+
+.step-header {
+  background-color: s.$color-neutral-1;
+  color: s.$color-neutral-2;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  @include s.layout-padding;
+
+  &__desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    @include s.mobile {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include s.mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  &__back-button {
+    border: 2px solid s.$color-neutral-4;
+  }
+
+  &__text--mobile {
+    font-weight: 900;
+    color: s.$color-neutral-3;
+    font-size: 0.625rem !important;
+    line-height: 1rem !important;
+    text-transform: uppercase;
+  }
+
+  &__line {
+    width: 2rem;
+    height: 2px;
+    border-top: 2px dotted s.$color-neutral-2;
+
+    &--active {
+      border-top: 2px solid s.$color-primary-blueberry;
+    }
+  }
+
+  &__progress-bar {
+    position: relative;
+    flex: 1;
+    height: 4px;
+    background-color: s.$color-neutral-4;
+    border-radius: 9999px;
+    overflow: hidden;
+
+    @include s.mobile {
+      display: block;
+    }
+
+    .step-header__progress-fill {
+      height: 100%;
+      background-color: s.$color-primary-blueberry;
+      transition: width 0.3s ease-in-out;
+    }
+  }
+}

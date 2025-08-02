@@ -1,0 +1,54 @@
+@use "../../styles/" as s;
+
+.step-header__content {
+  font-family: "Lato", sans-serif;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: s.$color-neutral-2;
+
+  &--active {
+    .step-header__circle {
+      background-color: s.$color-primary-blueberry;
+    }
+
+    .step-header__step-number {
+      color: white;
+    }
+
+    .step-header__text {
+      font-weight: bold;
+      color: s.$color-neutral-3;
+    }
+  }
+}
+
+.step-header__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.step-header__circle {
+  background-color: transparent;
+  border: 1px solid s.$color-neutral-2;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step-header__step-number {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.step-header__text {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+}

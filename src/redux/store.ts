@@ -5,6 +5,8 @@ import { plansApi } from "./services/plansApi";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
+import stepSlice from "./slices/stepSlice";
+import planSlice from "./slices/planSlice";
 
 const persistedConfig = {
   key: "user",
@@ -14,6 +16,8 @@ const persistedConfig = {
 
 const rootReducer = combineReducers({
   user: userSlice,
+  step: stepSlice,
+  plan: planSlice,
   [userApi.reducerPath]: userApi.reducer,
   [plansApi.reducerPath]: plansApi.reducer,
 });
