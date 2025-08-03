@@ -1,0 +1,66 @@
+@use "../../styles/" as s;
+
+.beneficiary-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 16rem;
+  border-color: transparent;
+  border-radius: 1.5rem;
+  box-shadow: 0px 1px 32px 0px s.$color-primary-lavander;
+  padding: 0 24px 40px 24px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: s.$color-neutral-3;
+  }
+
+  &__image {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  &__checkbox-label {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    border: 1px solid s.$color-neutral-4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 1rem;
+    color: white;
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  &__checkbox:checked + &__circle {
+    background-color: s.$color-primary-success;
+
+    &::after {
+      content: "✔";
+      font-size: 0.75rem;
+      color: white;
+    }
+  }
+}

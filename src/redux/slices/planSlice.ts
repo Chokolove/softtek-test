@@ -1,13 +1,24 @@
 import type { Plan } from "@/types/plan";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: Plan | null = null;
+type InitialStateProps = {
+  data: Plan;
+};
+
+const initialState: InitialStateProps = {
+  data: {
+    name: "",
+    price: 0,
+    description: [],
+    age: 0,
+  },
+};
 
 const planSlice = createSlice({
   name: "plan",
   initialState,
   reducers: {
-    setPlan: (state, action) => (state = action.payload),
+    setPlan: (state, action) => (state.data = action.payload),
   },
 });
 

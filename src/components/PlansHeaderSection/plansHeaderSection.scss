@@ -1,0 +1,40 @@
+@use "../../styles/" as s;
+
+.plans-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 544px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__beneficiary-section {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 1rem;
+  }
+}

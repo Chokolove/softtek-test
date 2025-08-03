@@ -2,11 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { User } from "../../types/user";
 
 type InitialStateProps = {
-  data: User | null;
+  data: User;
 };
 
 const initialState: InitialStateProps = {
-  data: null,
+  data: {
+    name: "",
+    lastName: "",
+    birthDay: "",
+    docType: "",
+    nroDoc: "",
+    phone: "",
+  },
 };
 
 const userSlice = createSlice({
@@ -17,7 +24,7 @@ const userSlice = createSlice({
       state.data = action.payload;
     },
     logout: (state) => {
-      state.data = null;
+      state.data = initialState.data;
     },
   },
 });

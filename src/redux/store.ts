@@ -7,6 +7,7 @@ import { persistReducer } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
 import stepSlice from "./slices/stepSlice";
 import planSlice from "./slices/planSlice";
+import beneficiarySlice from "./slices/beneficiarySlice";
 
 const persistedConfig = {
   key: "user",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   user: userSlice,
   step: stepSlice,
   plan: planSlice,
+  beneficiary: beneficiarySlice,
   [userApi.reducerPath]: userApi.reducer,
   [plansApi.reducerPath]: plansApi.reducer,
 });
