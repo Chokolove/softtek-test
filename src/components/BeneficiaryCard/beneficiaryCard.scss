@@ -12,7 +12,9 @@
   @include s.mobile {
     max-width: none;
   }
-
+  &--active {
+    border: 3px solid s.$color-gray-1;
+  }
   &__container {
     display: flex;
     flex-direction: column;

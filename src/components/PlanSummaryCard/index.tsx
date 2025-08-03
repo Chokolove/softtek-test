@@ -2,12 +2,19 @@ import type { Plan } from "@/types/plan";
 import "./planSummaryCard.scss";
 import iconHome from "../../assets/IcHomeLight.png";
 import iconHospital from "../../assets/IcHospitalLight.png";
+import type { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 
 type PlanSummaryCardProps = {
   plan: Plan;
 };
 
 export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
+  const currentBeneficiaryPlan = useSelector(
+    (state: RootState) => state.beneficiary
+  );
+  const hasDiscount = currentBeneficiaryPlan.data.id === 2;
+  const price = hasDiscount ? plan.price * 0.95 : plan.price;
   return (
     <div className="plan-summary-card">
       <div className="plan-summary-card__container">
@@ -21,9 +28,20 @@ export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
             <p className="plan-summary-card__name">{plan.name}</p>
             <div className="plan-summary-card__price">
               <p className="plan-summary-card__price--label">Costo del plan</p>
-              <p className="plan-summary-card__price--text">
-                ${plan.price} al mes
-              </p>
+              {hasDiscount ? (
+                <>
+                  <p className="plan-summary-card__price--text-discount">
+                    ${plan.price} antes
+                  </p>
+                  <p className="plan-summary-card__price--text">
+                    ${price} al mes
+                  </p>
+                </>
+              ) : (
+                <p className="plan-summary-card__price--text">
+                  ${price} al mes
+                </p>
+              )}
             </div>
           </div>
           <img

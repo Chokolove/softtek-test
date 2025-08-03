@@ -72,6 +72,13 @@
       font-weight: 900;
       margin: 0;
     }
+    &--text-discount {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      text-decoration: line-through;
+      color: s.$color-neutral-2;
+      margin: 0;
+    }
   }
 
   &__description {
