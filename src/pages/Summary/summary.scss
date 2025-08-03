@@ -5,11 +5,117 @@
   color: s.$color-neutral-3;
 
   @include s.layout-padding;
+  @include s.mobile {
+    padding-top: 2rem;
+  }
 
   &__container {
     margin-top: 2rem;
+    max-width: 928px;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include s.mobile {
+      margin-top: 0;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 3rem;
+
+    @include s.mobile {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__card {
+    box-shadow: 0px 1px 32px 0px s.$color-primary-lavander;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__user-label {
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    line-height: 1rem;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  &__user-text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: s.$color-neutral-5;
+  }
+
+  &__billing-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__billing-contact-label {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0;
+  }
+
+  &__billing-contact-text {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin: 0;
+
+    &--uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  &__plan {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__plan-label {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0;
+  }
+
+  &__plan-text {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin: 0;
   }
 
   &__back-button {

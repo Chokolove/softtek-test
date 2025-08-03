@@ -3,7 +3,7 @@ import "./stepHeader.scss";
 import type { RootState } from "@/redux/store";
 import clsx from "clsx";
 import { ChevronLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "@/redux/slices/userSlice";
 import StepHeaderContent from "../StepHeaderContent";
 import { prevStep } from "@/redux/slices/stepSlice";
@@ -24,6 +24,7 @@ const STEPS = [
 export default function StepHeader() {
   const currentStep = useSelector((state: RootState) => state.step);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="step-header">
       <div className="step-header__mobile">
@@ -45,7 +46,13 @@ export default function StepHeader() {
         ) : (
           <button
             className="step-header__circle step-header__back-button"
-            onClick={() => dispatch(prevStep())}
+            onClick={() => {
+              dispatch(prevStep());
+              navigate(
+                STEPS.find((step) => step.position === currentStep - 1)?.link ??
+                  "/"
+              );
+            }}
           >
             <ChevronLeft
               height={12}

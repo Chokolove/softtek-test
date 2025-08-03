@@ -50,7 +50,7 @@ export default function Resume() {
             <div className="summary__user">
               <p className="summary__user-label">Precios calculados para:</p>
               <p className="summary__user-text">
-                <Users />
+                <Users height={24} width={24} fill="#141938" />
                 {currentUser.data.name} {currentUser.data.lastName}
               </p>
             </div>
