@@ -22,7 +22,7 @@ export default function StepHeaderContent({
   const isCurrent = currentStep === position;
   const isPrevious = position < currentStep;
   const isNext = position === currentStep + 1;
-  const hasPlan = !!currentPlan;
+  const hasPlan = !!currentPlan.data.name;
 
   const canGoToStep = isCurrent || isPrevious || (isNext && hasPlan);
 

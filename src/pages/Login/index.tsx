@@ -6,13 +6,20 @@ import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { resetPlan } from "@/redux/slices/planSlice";
+import { resetStep } from "@/redux/slices/stepSlice";
+import { resetBeneficiary } from "@/redux/slices/beneficiarySlice";
+import { logout } from "@/redux/slices/userSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
   const location = useLocation();
 
   useEffect(() => {
-    // dispatch({ type: "RESET_STORE" });
+    dispatch(logout());
+    dispatch(resetBeneficiary());
+    dispatch(resetPlan());
+    dispatch(resetStep());
   }, [dispatch, location]);
   return (
     <div className="login-page">
