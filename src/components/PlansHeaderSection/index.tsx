@@ -25,6 +25,7 @@ export default function PlansHeaderSection({
         {beneficiaryOptions.map((option, index) => (
           <BeneficiaryCard
             key={index}
+            id={option.id}
             icon={option.icon}
             title={option.title}
             text={option.text}

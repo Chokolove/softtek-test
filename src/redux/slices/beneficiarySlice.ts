@@ -7,6 +7,7 @@ type InitialStateProps = {
 
 const initialState: InitialStateProps = {
   data: {
+    id: 0,
     icon: "",
     title: "",
     text: "",

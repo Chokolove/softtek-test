@@ -6,6 +6,7 @@ import type { RootState } from "@/redux/store";
 import { useCallback } from "react";
 
 export default function BeneficiaryCard({
+  id,
   icon,
   title,
   text,
@@ -15,8 +16,8 @@ export default function BeneficiaryCard({
   );
   const dispatch = useDispatch();
   const handleCheck = useCallback(() => {
-    dispatch(setBeneficiary({ icon, title, text }));
-  }, [dispatch, icon, title, text]);
+    dispatch(setBeneficiary({ id, icon, title, text }));
+  }, [dispatch, id, icon, title, text]);
   return (
     <div className="beneficiary-card">
       <label className="beneficiary-card__radio-label">
