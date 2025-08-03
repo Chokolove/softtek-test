@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 import type { ReactNode } from "react";
 import beneficiaryReducer from "@/redux/slices/beneficiarySlice";
 import type BeneficiaryOption from "@/types/beneficiaryOption";
+import { MemoryRouter } from "react-router-dom";
 
 export function renderWithRedux(
   ui: ReactNode,
@@ -24,5 +25,9 @@ export function renderWithRedux(
     preloadedState,
   });
 
-  return render(<Provider store={store}>{ui}</Provider>);
+  return render(
+    <Provider store={store}>
+      <MemoryRouter>{ui}</MemoryRouter>
+    </Provider>
+  );
 }

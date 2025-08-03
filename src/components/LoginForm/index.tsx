@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { login } from "@/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useLazyGetUserDataQuery } from "@/redux/services/userApi";
+import clsx from "clsx";
 
 type FormValues = {
   docType: string;
@@ -17,13 +18,14 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>();
   const dispatch = useDispatch();
   const [triggerGetUserData] = useLazyGetUserDataQuery(); // This needs to change if we use a mutation
   const navigate = useNavigate();
 
   const onSubmit = async (data: FormValues) => {
+    if (isSubmitting) return;
     try {
       const user = await triggerGetUserData().unwrap();
       dispatch(
@@ -36,10 +38,10 @@ export default function LoginForm() {
           birthDay: user.birthDay,
         })
       );
+      navigate("/plans");
     } catch (err) {
       console.error("Error fetching user:", err);
     }
-    navigate("/plans");
   };
 
   return (
@@ -101,8 +103,8 @@ export default function LoginForm() {
                 {...register("phone", {
                   required: "Numero de celular requerido",
                   pattern: {
-                    value: /^[0-9]{9}$/,
-                    message: "Debe tener 9 dígitos",
+                    value: /^[0-9]+$/,
+                    message: "Solo se permiten números",
                   },
                 })}
               />
@@ -158,7 +160,14 @@ export default function LoginForm() {
           </a>
         </div>
 
-        <button className="login-form__button" type="submit">
+        <button
+          className={clsx(
+            "login-form__button",
+            isSubmitting && "login-form__button--disabled"
+          )}
+          type="submit"
+          disabled={isSubmitting}
+        >
           Cotiza gratis
         </button>
       </form>
