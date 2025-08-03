@@ -40,7 +40,7 @@ export default function BeneficiaryCard({
         <div className="beneficiary-card__header">
           <img
             src={`/${icon}.png`}
-            alt="People"
+            alt={icon}
             className="beneficiary-card__image"
           />
           <h3 className="beneficiary-card__title">{title}</h3>

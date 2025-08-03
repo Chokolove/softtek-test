@@ -19,6 +19,7 @@
     justify-content: center;
     align-items: center;
   }
+
   &__text {
     margin: 0;
     font-size: 0.75rem;
@@ -30,19 +31,22 @@
         display: none;
       }
     }
+  }
 
-    &--phone {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      font-size: 1.125rem;
-      line-height: 1.25rem;
+  &__phone-container {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
 
-      @include s.mobile {
-        font-size: 1rem;
-      }
+  &__phone-text {
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    margin: 0;
+    @include s.mobile {
+      font-size: 1rem;
     }
   }
 }
