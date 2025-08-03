@@ -9,11 +9,26 @@
   box-shadow: 0px 1px 32px 0px s.$color-primary-lavander;
   padding: 0 24px 40px 24px;
 
+  @include s.mobile {
+    max-width: none;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     color: s.$color-neutral-3;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include s.mobile {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__image {
@@ -28,14 +43,14 @@
     margin: 0;
   }
 
-  &__checkbox-label {
+  &__radio-label {
     margin-top: 16px;
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
   }
 
-  &__checkbox {
+  &__radio {
     display: none;
   }
 
@@ -54,7 +69,7 @@
     transition: background-color 0.2s ease-in-out;
   }
 
-  &__checkbox:checked + &__circle {
+  &__radio:checked + &__circle {
     background-color: s.$color-primary-success;
 
     &::after {

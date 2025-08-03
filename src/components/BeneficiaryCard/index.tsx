@@ -19,22 +19,24 @@ export default function BeneficiaryCard({
   }, [dispatch, icon, title, text]);
   return (
     <div className="beneficiary-card">
-      <label className="beneficiary-card__checkbox-label">
+      <label className="beneficiary-card__radio-label">
         <input
           type="radio"
-          className="beneficiary-card__checkbox"
+          className="beneficiary-card__radio"
           checked={currentBeneficiary.icon === icon}
           onChange={() => handleCheck()}
         />
         <span className="beneficiary-card__circle" />
       </label>
       <div className="beneficiary-card__container">
-        <img
-          src={`/${icon}.png`}
-          alt="People"
-          className="beneficiary-card__image"
-        />
-        <h3 className="beneficiary-card__title">{title}</h3>
+        <div className="beneficiary-card__header">
+          <img
+            src={`/${icon}.png`}
+            alt="People"
+            className="beneficiary-card__image"
+          />
+          <h3 className="beneficiary-card__title">{title}</h3>
+        </div>
         <p className="beneficiary-card__text">{text}</p>
       </div>
     </div>
