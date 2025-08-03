@@ -3,7 +3,10 @@ import "./planSummaryCard.scss";
 import iconHome from "../../assets/IcHomeLight.png";
 import iconHospital from "../../assets/IcHospitalLight.png";
 import type { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlan } from "@/redux/slices/planSlice";
+import { setStep } from "@/redux/slices/stepSlice";
+import { useNavigate } from "react-router-dom";
 
 type PlanSummaryCardProps = {
   plan: Plan;
@@ -15,6 +18,22 @@ export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
   );
   const hasDiscount = currentBeneficiaryPlan.data.id === 2;
   const price = hasDiscount ? plan.price * 0.95 : plan.price;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const currentPlan = {
+      name: plan.name,
+      price: price,
+      description: plan.description,
+      age: plan.age,
+    };
+
+    dispatch(setPlan(currentPlan));
+    dispatch(setStep(2));
+    navigate("/resume");
+  };
   return (
     <div className="plan-summary-card">
       <div className="plan-summary-card__container">
@@ -57,7 +76,12 @@ export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
           ))}
         </ul>
       </div>
-      <button className="plan-summary-card__button">Seleccionar Plan</button>
+      <button
+        className="plan-summary-card__button"
+        onClick={() => handleClick()}
+      >
+        Seleccionar Plan
+      </button>
     </div>
   );
 }
