@@ -3,6 +3,6 @@ export interface User {
   lastName: string;
   birthDay: string;
   docType: string;
-  nroDoc: string;
+  docNumber: string;
   phone: string;
 }

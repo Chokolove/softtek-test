@@ -3,16 +3,19 @@ import "./StepHeaderContent.scss";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/redux/store";
 import { setStep } from "@/redux/slices/stepSlice";
+import { useNavigate } from "react-router-dom";
 
 type StepHeaderContentProps = {
   currentStep: number;
   position: number;
   text: string;
+  link?: string;
 };
 export default function StepHeaderContent({
   currentStep,
   position,
   text,
+  link,
 }: StepHeaderContentProps) {
   const currentPlan = useSelector((state: RootState) => state.plan);
   const dispatch = useDispatch();
@@ -23,9 +26,12 @@ export default function StepHeaderContent({
 
   const canGoToStep = isCurrent || isPrevious || (isNext && hasPlan);
 
+  const navigate = useNavigate();
+
   const handleClick = () => {
     if (canGoToStep) {
       dispatch(setStep(position));
+      navigate(link ?? "/");
     }
   };
 

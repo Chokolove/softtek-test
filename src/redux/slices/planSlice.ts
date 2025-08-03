@@ -21,8 +21,9 @@ const planSlice = createSlice({
     setPlan: (state, action) => {
       state.data = action.payload;
     },
+    resetPlan: () => initialState,
   },
 });
 
-export const { setPlan } = planSlice.actions;
+export const { setPlan, resetPlan } = planSlice.actions;
 export default planSlice.reducer;

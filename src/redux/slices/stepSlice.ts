@@ -7,8 +7,9 @@ const stepSlice = createSlice({
     nextStep: (state) => state + 1,
     prevStep: (state) => state - 1,
     setStep: (state, action) => (state = action.payload),
+    resetStep: () => 1,
   },
 });
 
-export const { nextStep, prevStep, setStep } = stepSlice.actions;
+export const { nextStep, prevStep, setStep, resetStep } = stepSlice.actions;
 export default stepSlice.reducer;

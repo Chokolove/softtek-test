@@ -3,8 +3,17 @@ import loginImage from "@/assets/login-side.png";
 import "./login.scss";
 import LoginForm from "@/components/LoginForm";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    // dispatch({ type: "RESET_STORE" });
+  }, [dispatch, location]);
   return (
     <div className="login-page">
       <div className="login-page__background-blur-purlple"></div>

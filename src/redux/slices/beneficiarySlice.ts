@@ -20,8 +20,9 @@ const beneficiarySlice = createSlice({
     setBeneficiary: (state, action) => {
       state.data = action.payload;
     },
+    resetBeneficiary: () => initialState,
   },
 });
 
-export const { setBeneficiary } = beneficiarySlice.actions;
+export const { setBeneficiary, resetBeneficiary } = beneficiarySlice.actions;
 export default beneficiarySlice.reducer;

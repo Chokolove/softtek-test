@@ -4,15 +4,15 @@ import { userApi } from "./services/userApi";
 import { plansApi } from "./services/plansApi";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
-import persistStore from "redux-persist/es/persistStore";
+import { persistStore } from "redux-persist";
 import stepSlice from "./slices/stepSlice";
 import planSlice from "./slices/planSlice";
 import beneficiarySlice from "./slices/beneficiarySlice";
 
 const persistedConfig = {
-  key: "user",
+  key: "root",
   storage,
-  whitelist: ["user"],
+  whitelist: ["user", "plan", "beneficiary", "step"],
 };
 
 const rootReducer = combineReducers({
@@ -34,6 +34,7 @@ export const store = configureStore({
     }).concat(userApi.middleware, plansApi.middleware),
 });
 
+console.log("STORE INIT", store);
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

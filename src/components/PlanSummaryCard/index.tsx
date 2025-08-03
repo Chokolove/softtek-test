@@ -32,7 +32,7 @@ export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
 
     dispatch(setPlan(currentPlan));
     dispatch(setStep(2));
-    navigate("/resume");
+    navigate("/summary");
   };
   return (
     <div className="plan-summary-card">
@@ -77,6 +77,7 @@ export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
         </ul>
       </div>
       <button
+        type="button"
         className="plan-summary-card__button"
         onClick={() => handleClick()}
       >

@@ -1,0 +1,46 @@
+@use "../../styles/" as s;
+.summary {
+  font-family: "Lato", sans-serif;
+  padding-top: 2.5rem;
+  color: s.$color-neutral-3;
+
+  @include s.layout-padding;
+
+  &__container {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__back-button {
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    color: s.$color-primary-blueberry;
+    margin-bottom: 3.5rem;
+    margin-left: 90px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    @include s.mobile {
+      display: none;
+    }
+
+    &--icon {
+      border: 2px solid s.$color-primary-blueberry;
+      border-radius: 100%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -12,10 +12,12 @@ const STEPS = [
   {
     position: 1,
     text: "Planes y coberturas",
+    link: "/plans",
   },
   {
     position: 2,
     text: "Resumen",
+    link: "/summary",
   },
 ];
 
@@ -72,6 +74,7 @@ export default function StepHeader() {
               currentStep={currentStep}
               position={step.position}
               text={step.text}
+              link={step.link}
             />
             {index < STEPS.length - 1 && (
               <div

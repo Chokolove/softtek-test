@@ -11,7 +11,7 @@ const initialState: InitialStateProps = {
     lastName: "",
     birthDay: "",
     docType: "",
-    nroDoc: "",
+    docNumber: "",
     phone: "",
   },
 };
