@@ -1,9 +1,10 @@
 import { useGetPlansQuery } from "@/redux/services/plansApi";
-import "./plansSummary.scss";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/redux/store";
 import { useMemo } from "react";
 import { differenceInYears, parse } from "date-fns";
+import "./plansSummary.scss";
+import PlanSummaryCard from "../PlanSummaryCard";
 
 export default function PlansSummary() {
   const currentBeneficiaryPlan = useSelector(
@@ -39,11 +40,9 @@ export default function PlansSummary() {
   if (error) return <p>Error loading plans.</p>;
 
   return (
-    <div>
+    <div className="plans-summary">
       {ageEligiblePlans.map((plan, index) => (
-        <div key={index}>
-          <h2>{plan.name}</h2>
-        </div>
+        <PlanSummaryCard key={index} plan={plan} />
       ))}
     </div>
   );

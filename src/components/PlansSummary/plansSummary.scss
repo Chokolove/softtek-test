@@ -1,1 +1,12 @@
 @use "../../styles/" as s;
+.plans-summary {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 2rem;
+  margin-top: 1.25rem;
+  margin-bottom: 5rem;
+  height: 687px;
+
+  @include s.layout-padding;
+}
