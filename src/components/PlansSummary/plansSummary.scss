@@ -9,4 +9,59 @@
   height: 687px;
 
   @include s.layout-padding;
+  @include s.mobile {
+    display: none;
+  }
+
+  &--mobile {
+    display: none;
+
+    @include s.mobile {
+      display: block;
+    }
+  }
+}
+.embla {
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  height: 687px;
+
+  &__container {
+    display: flex;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    min-width: 0;
+  }
+  &__controls {
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  &__button {
+    background-color: #fff;
+    border: 1px solid s.$color-primary-blueberry;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--prev,
+    &--next {
+      user-select: none;
+    }
+    &__counter {
+      font-weight: bold;
+    }
+  }
 }
