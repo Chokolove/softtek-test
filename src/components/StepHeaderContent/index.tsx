@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import "./StepHeaderContent.scss";
+import "./stepHeaderContent.scss";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/redux/store";
 import { setStep } from "@/redux/slices/stepSlice";
