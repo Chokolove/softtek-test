@@ -49,15 +49,24 @@ export default function PlanSummaryCard({ plan }: PlanSummaryCardProps) {
               <p className="plan-summary-card__price--label">Costo del plan</p>
               {hasDiscount ? (
                 <>
-                  <p className="plan-summary-card__price--text-discount">
+                  <p
+                    className="plan-summary-card__price--text-discount"
+                    data-testid="original-price"
+                  >
                     ${plan.price} antes
                   </p>
-                  <p className="plan-summary-card__price--text">
+                  <p
+                    className="plan-summary-card__price--text"
+                    data-testid="price"
+                  >
                     ${price} al mes
                   </p>
                 </>
               ) : (
-                <p className="plan-summary-card__price--text">
+                <p
+                  className="plan-summary-card__price--text"
+                  data-testid="price"
+                >
                   ${price} al mes
                 </p>
               )}
