@@ -8,9 +8,10 @@ import { resetStep } from "@/redux/slices/stepSlice";
 import type { RootState } from "@/redux/store";
 import { useEffect } from "react";
 
-export default function Resume() {
+export default function Summary() {
   const currentUser = useSelector((state: RootState) => state.user);
   const currentPlan = useSelector((state: RootState) => state.plan);
+  const hasPlan = !!currentPlan.data.name;
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -19,10 +20,10 @@ export default function Resume() {
   };
 
   useEffect(() => {
-    if (!currentPlan) {
+    if (!hasPlan) {
       navigate("/plans");
     }
-  }, [currentPlan, navigate]);
+  }, [hasPlan, navigate]);
   return (
     <div>
       <BrandBar />
