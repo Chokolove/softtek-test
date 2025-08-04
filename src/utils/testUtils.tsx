@@ -4,15 +4,20 @@ import { render } from "@testing-library/react";
 import type { ReactNode } from "react";
 import beneficiaryReducer from "@/redux/slices/beneficiarySlice";
 import userReducer from "@/redux/slices/userSlice";
+import planReducer from "@/redux/slices/planSlice";
+import stepReducer from "@/redux/slices/stepSlice";
 import type BeneficiaryOption from "@/types/beneficiaryOption";
 import { MemoryRouter } from "react-router-dom";
 import type { User } from "@/types/user";
 import { plansApi } from "@/redux/services/plansApi";
 import { vi } from "vitest";
+import type { Plan } from "@/types/plan";
 
 type PreloadedState = {
   beneficiary: { data: BeneficiaryOption };
   user: { data: User };
+  plan: { data: Plan };
+  step: number;
 };
 
 export function createMockQueryResult<T>({
@@ -47,6 +52,8 @@ export function renderWithRedux(
     reducer: {
       beneficiary: beneficiaryReducer,
       user: userReducer,
+      plan: planReducer,
+      step: stepReducer,
       [plansApi.reducerPath]: plansApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

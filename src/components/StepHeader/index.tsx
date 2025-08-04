@@ -46,6 +46,7 @@ export default function StepHeader() {
         ) : (
           <button
             className="step-header__circle step-header__back-button"
+            data-testid="step-header__back-button"
             onClick={() => {
               dispatch(prevStep());
               navigate(
@@ -67,6 +68,7 @@ export default function StepHeader() {
         </p>
         <div className="step-header__progress-bar">
           <div
+            data-testid="step-header__progress-fill"
             className="step-header__progress-fill"
             style={{
               width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%`,
