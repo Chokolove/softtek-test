@@ -1,4 +1,4 @@
-import { renderWithRedux } from "@/utils/test-utils";
+import { renderWithRedux } from "@/utils/testUtils";
 import { screen } from "@testing-library/react";
 import Footer from ".";
 

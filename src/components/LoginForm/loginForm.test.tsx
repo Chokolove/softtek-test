@@ -1,4 +1,4 @@
-import { renderWithRedux } from "@/utils/test-utils";
+import { renderWithRedux } from "@/utils/testUtils";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import LoginForm from ".";
 import { userEvent } from "@testing-library/user-event";

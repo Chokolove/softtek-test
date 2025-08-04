@@ -1,12 +1,13 @@
-import { useGetPlansQuery } from "@/redux/services/plansApi";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/redux/store";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { differenceInYears, parse } from "date-fns";
-import "./plansSummary.scss";
-import PlanSummaryCard from "../PlanSummaryCard";
-import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import type { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
+import { useGetPlansQuery } from "@/redux/services/plansApi";
+import { filterAgeEligiblePlans } from "@/utils/planUtils";
+import PlanSummaryCard from "@/components/PlanSummaryCard";
+import { getAge, parseBirthday } from "@/utils/dateUtils";
+import "./plansSummary.scss";
 
 export default function PlansSummary() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -22,14 +23,12 @@ export default function PlansSummary() {
     (state: RootState) => state.beneficiary
   );
   const currentUser = useSelector((state: RootState) => state.user);
-  const userBirthDay = useMemo(() => {
-    if (!currentUser?.data?.birthDay) return null;
-    return parse(currentUser.data.birthDay, "dd-MM-yyyy", new Date());
-  }, [currentUser?.data?.birthDay]);
 
-  const userAge = userBirthDay
-    ? differenceInYears(new Date(), userBirthDay)
-    : null;
+  const userBirthDay = useMemo(
+    () => parseBirthday(currentUser?.data?.birthDay ?? ""),
+    [currentUser?.data?.birthDay]
+  );
+  const userAge = useMemo(() => getAge(userBirthDay), [userBirthDay]);
 
   const shouldFetch = Boolean(currentBeneficiaryPlan?.data.id);
 
@@ -42,8 +41,7 @@ export default function PlansSummary() {
   });
 
   const ageEligiblePlans = useMemo(() => {
-    if (!plans || userAge == null) return [];
-    return plans.list.filter((plan) => plan.age >= userAge);
+    return filterAgeEligiblePlans(plans?.list ?? [], userAge);
   }, [plans, userAge]);
 
   useEffect(() => {
