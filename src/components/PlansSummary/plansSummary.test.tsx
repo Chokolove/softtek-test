@@ -1,7 +1,11 @@
 import { vi } from "vitest";
 import { screen } from "@testing-library/react";
 import * as plansApi from "@/redux/services/plansApi";
-import { createMockQueryResult, renderWithRedux } from "@/utils/testUtils";
+import {
+  baseState,
+  createMockQueryResult,
+  renderWithRedux,
+} from "@/utils/testUtils";
 import PlansSummary from ".";
 import type { Plan } from "@/types/plan";
 
@@ -30,53 +34,12 @@ describe("PlansSummary", () => {
     vi.restoreAllMocks();
   });
 
-  const preloadedState: {
-    beneficiary: {
-      data: {
-        id: number;
-        icon: string;
-        title: string;
-        text: string;
-      };
-    };
-    user: {
-      data: {
-        birthDay: string;
-        name: string;
-        lastName: string;
-        docType: string;
-        docNumber: string;
-        phone: string;
-      };
-    };
-  } = {
-    beneficiary: {
-      data: {
-        id: 1,
-        icon: "",
-        title: "",
-        text: "",
-      },
-    },
-    user: {
-      data: {
-        birthDay: "15-04-2000",
-        name: "",
-        lastName: "",
-        docType: "",
-        docNumber: "",
-        phone: "",
-      },
-    },
-  };
-
   it("renders nothing when shouldFetch is false", () => {
     const { container } = renderWithRedux(<PlansSummary />, {
       preloadedState: {
-        user: { ...preloadedState.user },
+        ...baseState,
         beneficiary: {
-          ...preloadedState.beneficiary,
-          data: { ...preloadedState.beneficiary.data, id: 0 },
+          data: { ...baseState.beneficiary.data, id: 0 },
         },
       },
     });
@@ -92,7 +55,12 @@ describe("PlansSummary", () => {
     );
 
     renderWithRedux(<PlansSummary />, {
-      preloadedState,
+      preloadedState: {
+        ...baseState,
+        beneficiary: {
+          data: { ...baseState.beneficiary.data, id: 1 },
+        },
+      },
     });
 
     expect(screen.getByText(/loading plans/i)).toBeInTheDocument();
@@ -106,7 +74,12 @@ describe("PlansSummary", () => {
     );
 
     renderWithRedux(<PlansSummary />, {
-      preloadedState,
+      preloadedState: {
+        ...baseState,
+        beneficiary: {
+          data: { ...baseState.beneficiary.data, id: 1 },
+        },
+      },
     });
 
     expect(screen.getByText(/error loading plans/i)).toBeInTheDocument();
@@ -135,7 +108,18 @@ describe("PlansSummary", () => {
     );
 
     renderWithRedux(<PlansSummary />, {
-      preloadedState,
+      preloadedState: {
+        ...baseState,
+        beneficiary: {
+          data: { ...baseState.beneficiary.data, id: 1 },
+        },
+        user: {
+          data: {
+            ...baseState.user.data,
+            birthDay: "01-01-2001",
+          },
+        },
+      },
     });
 
     expect(screen.getAllByTestId("Plan B")[0]).toBeInTheDocument();

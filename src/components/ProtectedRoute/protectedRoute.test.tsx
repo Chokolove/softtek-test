@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from ".";
-import { renderWithRedux } from "@/utils/testUtils";
+import { baseState, renderWithRedux } from "@/utils/testUtils";
 
 describe("ProtectedRoute", () => {
   const TestLogin = () => <div>Login Page</div>;
@@ -19,6 +19,7 @@ describe("ProtectedRoute", () => {
   it("redirects to /login when user is not logged in", () => {
     renderWithRedux(createUi(), {
       preloadedState: {
+        ...baseState,
         user: {
           data: {
             docNumber: "",
@@ -27,14 +28,6 @@ describe("ProtectedRoute", () => {
             birthDay: "",
             docType: "",
             phone: "",
-          },
-        }, // no user
-        beneficiary: {
-          data: {
-            id: 0,
-            icon: "",
-            title: "",
-            text: "",
           },
         },
       },
@@ -46,6 +39,7 @@ describe("ProtectedRoute", () => {
   it("renders protected route when user is logged in", () => {
     renderWithRedux(createUi(), {
       preloadedState: {
+        ...baseState,
         user: {
           data: {
             docNumber: "12345678",
@@ -54,14 +48,6 @@ describe("ProtectedRoute", () => {
             birthDay: "",
             docType: "DNI",
             phone: "",
-          },
-        }, // logged in
-        beneficiary: {
-          data: {
-            id: 0,
-            icon: "",
-            title: "",
-            text: "",
           },
         },
       },

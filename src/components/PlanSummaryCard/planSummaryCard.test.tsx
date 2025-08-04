@@ -1,4 +1,4 @@
-import { renderWithRedux } from "@/utils/testUtils";
+import { baseState, renderWithRedux } from "@/utils/testUtils";
 import type { Plan } from "@/types/plan";
 import { screen } from "@testing-library/react";
 import PlanSummaryCard from ".";
@@ -43,22 +43,13 @@ describe("PlanSummaryCard", () => {
     test("renders original price", () => {
       renderWithRedux(<PlanSummaryCard plan={mockPlan} />, {
         preloadedState: {
+          ...baseState,
           beneficiary: {
             data: {
               id: 2,
               icon: "",
               title: "",
               text: "",
-            },
-          },
-          user: {
-            data: {
-              birthDay: "",
-              name: "",
-              lastName: "",
-              docType: "",
-              docNumber: "",
-              phone: "",
             },
           },
         },
@@ -69,22 +60,13 @@ describe("PlanSummaryCard", () => {
     test("renders discounted price", () => {
       renderWithRedux(<PlanSummaryCard plan={mockPlan} />, {
         preloadedState: {
+          ...baseState,
           beneficiary: {
             data: {
               id: 2,
               icon: "",
               title: "",
               text: "",
-            },
-          },
-          user: {
-            data: {
-              birthDay: "",
-              name: "",
-              lastName: "",
-              docType: "",
-              docNumber: "",
-              phone: "",
             },
           },
         },
@@ -98,22 +80,13 @@ describe("PlanSummaryCard", () => {
       const user = userEvent.setup();
       renderWithRedux(<PlanSummaryCard plan={mockPlan} />, {
         preloadedState: {
+          ...baseState,
           beneficiary: {
             data: {
               id: 1,
               icon: "",
               title: "",
               text: "",
-            },
-          },
-          user: {
-            data: {
-              birthDay: "",
-              name: "",
-              lastName: "",
-              docType: "",
-              docNumber: "",
-              phone: "",
             },
           },
         },

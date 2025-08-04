@@ -67,3 +67,33 @@ export function renderWithRedux(
     </Provider>
   );
 }
+
+export const baseState = {
+  plan: {
+    data: {
+      name: "Plan A",
+      price: 0,
+      description: [],
+      age: 0,
+    },
+  },
+  beneficiary: {
+    data: {
+      id: 0,
+      icon: "",
+      title: "",
+      text: "",
+    },
+  },
+  user: {
+    data: {
+      name: "Test",
+      lastName: "",
+      birthDay: "",
+      docType: "",
+      docNumber: "123",
+      phone: "",
+    },
+  },
+  step: 1,
+};

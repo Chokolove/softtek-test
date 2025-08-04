@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithRedux } from "@/utils/testUtils";
+import { baseState, renderWithRedux } from "@/utils/testUtils";
 import userEvent from "@testing-library/user-event";
 import BeneficiaryCard from ".";
 
@@ -59,14 +59,13 @@ describe("BeneficiaryCard", () => {
 
   describe("with preloaded Redux state", () => {
     test("renders as active when already selected in Redux state", () => {
-      const preloadedState = {
-        beneficiary: {
-          data: option,
-        },
-      };
-
       const { container } = renderWithRedux(<BeneficiaryCard {...option} />, {
-        preloadedState,
+        preloadedState: {
+          ...baseState,
+          beneficiary: {
+            data: option,
+          },
+        },
       });
 
       const card = container.firstChild;
